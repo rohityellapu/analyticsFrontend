@@ -9,7 +9,7 @@ function PostTime({ date }) {
     let setTime = useCallback(() => {
         let time = new Date().getTime() - date
         let changingtime = time;
-        let milliFormat = { year: 31536000000, month: 2419200000, day: 86400000, hour: 3600000, minute: 60000, second: 1000 }
+        let milliFormat = { year: 31536000000, month: 2419200000, day: 86400000, hour: 3600000, minute: 60000 }
         let changeTime = () => {
             for (let key of Object.keys(milliFormat)) {
                 if (time >= milliFormat[key]) {
@@ -25,6 +25,9 @@ function PostTime({ date }) {
                 if (actualTime > 1) setPosted(`${actualTime} ${key}s ago`)
                 else setPosted(`a ${key} ago`);
                 break;
+            }
+            else {
+                setPosted('a few seconds ago')
             }
         }
 
